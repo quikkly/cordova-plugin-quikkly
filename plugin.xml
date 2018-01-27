@@ -31,4 +31,13 @@
         <lib-file src="src/android/quikklycore-lib-release-2.2.8.aar" />
         <lib-file src="src/android/quikkly-lib-release-2.2.8.aar" />
     </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Quikkly">
+                <param name="ios-package" value="Quikkly" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/Quikkly.swift" />
+    </platform>
 </plugin>
