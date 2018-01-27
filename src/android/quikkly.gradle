@@ -1,0 +1,24 @@
+android {
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
+
+repositories{
+    jcenter()
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:support-v13:25.3.0'
+   // compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:support-vector-drawable:25.3.0'
+    compile 'commons-io:commons-io:2.5'
+
+    compile(name:'quikklycore-lib-release-2.2.8', ext:'aar')
+    compile(name:'quikkly-lib-release-2.2.8', ext:'aar')
+}
