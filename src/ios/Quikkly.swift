@@ -13,10 +13,10 @@ class Quikkly : CDVPlugin {
         UIAlertController(
           title: "", 
           message: msg, 
-          preferredStyle: .Alert
+          preferredStyle: .alert
         )
 
-      self.viewController?.presentViewController(
+        self.viewController?.present(
         toastController, 
         animated: true, 
         completion: nil
@@ -24,27 +24,21 @@ class Quikkly : CDVPlugin {
 
       let duration = Double(NSEC_PER_SEC) * 3.0
       
-      dispatch_after(
-        dispatch_time(
-          DISPATCH_TIME_NOW, 
-          Int64(duration)
-        ), 
-        dispatch_get_main_queue(), 
-        { 
-          toastController.dismissViewControllerAnimated(
-            true, 
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // your code here
+        toastController.dismiss(
+            animated: true,
             completion: nil
-          )
-        }
-      )
-
+        )
+      }
+        
       pluginResult = CDVPluginResult(
         status: CDVCommandStatus_OK,
-        messageAsString: msg
+        messageAs: msg
       )
     }
 
-    self.commandDelegate!.sendPluginResult(
+    self.commandDelegate!.send(
       pluginResult, 
       callbackId: command.callbackId
     )

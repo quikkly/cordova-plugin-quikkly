@@ -39,5 +39,6 @@
             </feature>
         </config-file>
         <source-file src="src/ios/Quikkly.swift" />
+        <framework src="src/ios/Quikkly.framework" embed="true" />
     </platform>
 </plugin>
