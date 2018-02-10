@@ -1,3 +1,8 @@
+/**
+ * Simple ScanActivity subclass to grab and marshall
+ * back the scanned code(s) to the call i.e. 
+ * QuikklyPlugin
+ */
 package com.quikkly.cordova.quikkly;
 
 import android.app.Activity;
@@ -27,7 +32,7 @@ public class QuikklyActivity extends ScanActivity {
             for (Tag iter : result.tags) {
                 tags.add(iter.getData().toString());
             }
-            intent.putStringArrayListExtra(com.quikkly.cordova.quikkly.Quikkly.SCAN_CODE,
+            intent.putStringArrayListExtra(QuikklyPlugin.SCAN_CODE,
                     tags);
             setResult(Activity.RESULT_OK, intent);
             finish();
