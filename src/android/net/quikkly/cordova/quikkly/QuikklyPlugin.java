@@ -1,7 +1,10 @@
-package com.quikkly.cordova.quikkly;
+package net.quikkly.cordova.quikkly;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import net.quikkly.android.Quikkly;
+import net.quikkly.android.QuikklyBuilder;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -18,31 +21,40 @@ public class QuikklyPlugin extends CordovaPlugin {
     public static final String SCAN_CODE = "scanCode";
 
     private volatile CallbackContext callbackContext = null;
+    private volatile Quikkly quikkly = null;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        net.quikkly.android.Quikkly.configureInstance(
-                cordova.getActivity().getApplicationContext(),
-                4,
-                8);
     }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("openScanner")) {
-            this.openScanner(callbackContext);
+            this.openScanner(args.getString(0), callbackContext);
             return true;
         }
         return false;
     }
 
-    private void openScanner(CallbackContext callbackContext) {
+    private void openScanner(String apiKey, CallbackContext callbackContext) {
+        configureSDK(apiKey);
         Intent intent = new Intent(
                 cordova.getActivity().getApplicationContext(),
                 QuikklyActivity.class);
 
         this.callbackContext = callbackContext;
         this.cordova.startActivityForResult(this, intent, SCAN_ACTIVITY);
+    }
+
+    private void configureSDK(String apiKey) {
+        if(quikkly == null) {
+            quikkly = new QuikklyBuilder()
+                    .setApiKey(apiKey)
+                    .loadDefaultBlueprintFromLibraryAssets(cordova.getContext())
+                    .build();
+
+            quikkly.setAsDefault();
+        }
     }
 
     @Override

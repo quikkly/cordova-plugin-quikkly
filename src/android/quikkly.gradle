@@ -7,9 +7,6 @@ android {
 
 repositories{
     jcenter()
-    flatDir {
-        dirs 'libs'
-    }
     maven { 
         url 'http://developers.quikkly.io/nexus/repository/maven-releases/' 
     }

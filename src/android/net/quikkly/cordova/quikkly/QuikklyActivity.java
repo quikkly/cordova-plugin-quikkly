@@ -3,7 +3,7 @@
  * back the scanned code(s) to the call i.e. 
  * QuikklyPlugin
  */
-package com.quikkly.cordova.quikkly;
+package net.quikkly.cordova.quikkly;
 
 import android.app.Activity;
 import android.content.Intent;
