@@ -2,15 +2,15 @@
 <plugin id="cordova-plugin-quikkly" version="0.0.1" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Quikkly</name>
-    <js-module name="quikkly" src="www/quikkly.js">
-        <runs />
+    <name>QuikklyPlugin</name>
+
+    <js-module name="quikklyplugin" src="www/quikkly-plugin.js">
         <clobbers target="cordova.plugins.quikkly" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="Quikkly">
-                <param name="android-package" value="com.quikkly.cordova.quikkly.Quikkly" />
+            <feature name="QuikklyPlugin">
+                <param name="android-package" value="net.quikkly.cordova.quikkly.QuikklyPlugin" />
             </feature>
         </config-file>
         <config-file parent="/manifest" target="AndroidManifest.xml">
@@ -19,16 +19,36 @@
             <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
         </config-file>
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
-            <activity android:name="com.quikkly.cordova.quikkly.QuikklyActivity" 
+            <activity android:name="net.quikkly.cordova.quikkly.QuikklyActivity" 
                       android:label="@string/app_name"
                       android:theme="@style/Theme.AppCompat.NoActionBar"
                       android:screenOrientation="portrait"
                       android:configChanges="orientation|keyboardHidden" />
         </config-file>
-        <source-file src="src/android/com/quikkly/cordova/quikkly/Quikkly.java" target-dir="src/com/quikkly/cordova/quikkly" />
-        <source-file src="src/android/com/quikkly/cordova/quikkly/QuikklyActivity.java" target-dir="src/com/quikkly/cordova/quikkly" />
+        <source-file src="src/android/net/quikkly/cordova/quikkly/QuikklyPlugin.java" target-dir="src/net/quikkly/cordova/quikkly" />
+        <source-file src="src/android/net/quikkly/cordova/quikkly/QuikklyActivity.java" target-dir="src/net/quikkly/cordova/quikkly" />
         <framework src="src/android/quikkly.gradle" custom="true" type="gradleReference"/> 
-        <lib-file src="src/android/quikklycore-lib-release-2.2.8.aar" />
-        <lib-file src="src/android/quikkly-lib-release-2.2.8.aar" />
+    </platform>
+    <platform name="ios">
+        <preference name="CAMERA_USAGE_DESCRIPTION" default="This app needs camera access"/>
+        <dependency id="cordova-plugin-add-swift-support" version="1.7.1"/>
+        <dependency id="cordova-plugin-cocoapod-support" />
+
+        <pods-config ios-min-version="9.0" use-frameworks="true" />
+        <pod name="Quikkly" git="https://github.com/quikkly/ios-sdk.git" branch="master" />
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>$CAMERA_USAGE_DESCRIPTION</string>
+        </config-file>
+        <config-file target="config.xml" parent="/*">
+            <feature name="QuikklyPlugin">
+                <param name="ios-package" value="QuikklyPlugin" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/QuikklyPlugin.swift" />
+        <source-file src="src/ios/QuikklyPluginController.swift" />
+        <source-file src="src/ios/QuikklyPluginDelegate.swift" />
+        <hook type="before_build" src="scripts/fixEntitlementsBuildSetting.js"/>
+		<hook type="before_run" src="scripts/fixEntitlementsBuildSetting.js"/>
     </platform>
 </plugin>

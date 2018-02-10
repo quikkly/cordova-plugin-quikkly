@@ -7,18 +7,17 @@ android {
 
 repositories{
     jcenter()
-    flatDir{
-        dirs 'libs'
+    maven { 
+        url 'http://developers.quikkly.io/nexus/repository/maven-releases/' 
     }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:support-v13:25.3.0'
-   // compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:support-vector-drawable:25.3.0'
     compile 'commons-io:commons-io:2.5'
 
-    compile(name:'quikklycore-lib-release-2.2.8', ext:'aar')
-    compile(name:'quikkly-lib-release-2.2.8', ext:'aar')
+    compile 'net.quikkly.android:quikklycore-lib:1.2.2@aar'
+    compile 'net.quikkly.android:quikkly-lib:1.2.2@aar'
 }
