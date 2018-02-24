@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-quikkly",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Expose Quikklys Android and IOS SDK for Ionic.",
   "cordova": {
     "id": "cordova-plugin-quikkly",
@@ -16,6 +16,7 @@
   "keywords": [
     "cordova",
     "quikkly",
+    "quikkly-3.2.0",
     "scanning",
     "ecosystem:cordova",
     "cordova-android",
