@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 import net.quikkly.android.Quikkly;
-import net.quikkly.android.QuikklyBuilder;
+import net.quikkly.core.QuikklyCore;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -47,14 +47,10 @@ public class QuikklyPlugin extends CordovaPlugin {
     }
 
     private void configureSDK(String apiKey) {
-        if(quikkly == null) {
-            quikkly = new QuikklyBuilder()
-                    .setApiKey(apiKey)
-                    .loadDefaultBlueprintFromLibraryAssets(cordova.getContext())
-                    .build();
-
-            quikkly.setAsDefault();
+        if(!Quikkly.isConfigured()) {
+            Quikkly.configureInstance(cordova.getContext(), 1, 2);
         }
+        QuikklyCore.checkLinking();
     }
 
     @Override
