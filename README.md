@@ -21,8 +21,6 @@ cordova add cordova-plugin-quikkly
 
 Please read [RELEASENOTES.md]() for details
 
-Need to build and ionic native wrapper for the cordova plugin to surface the functionality as a component that can be easily integrated.
-
 ### Usage ###
 
 #### openScanner ####
