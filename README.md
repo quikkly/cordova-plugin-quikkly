@@ -1,14 +1,24 @@
-# cordova-plugin-quikkly #
-
-### What is this repository for? ###
 
 A cordova plugin for the Quikkly IOS and Android SDK's. The main purpose of this is to underpin an Ionic plugin. This allows Ionic developers launch the Quikkly scanner from their app.
 
-### How do I get set up? ###
+### Installation ###
 
-You need to add this plugin to your ionic app
-`ionic cordova add cordova-plugin-quikkly`
+To add this to your ionic app use the following
+```sh
+ionic cordova add cordova-plugin-quikkly
+```
 
-### Outstanding Items ###
+We also recommend the `ionic-quikkly-plugin` wrapper.
+
+---
+
+Alternatively to add to your cordova app use the following
+```sh
+cordova add cordova-plugin-quikkly
+```
+
+### Updates ###
+
+Please read [RELEASENOTES.md]() for details
 
 Need to build and ionic native wrapper for the cordova plugin to surface the functionality as a component that can be easily integrated.
