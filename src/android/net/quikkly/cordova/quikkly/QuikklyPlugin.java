@@ -21,7 +21,6 @@ public class QuikklyPlugin extends CordovaPlugin {
     public static final String SCAN_CODE = "scanCode";
 
     private volatile CallbackContext callbackContext = null;
-    private volatile Quikkly quikkly = null;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -37,7 +36,7 @@ public class QuikklyPlugin extends CordovaPlugin {
     }
 
     private void openScanner(String apiKey, CallbackContext callbackContext) {
-        configureSDK(apiKey);
+        configureSDK();
         Intent intent = new Intent(
                 cordova.getActivity().getApplicationContext(),
                 QuikklyActivity.class);
@@ -46,7 +45,7 @@ public class QuikklyPlugin extends CordovaPlugin {
         this.cordova.startActivityForResult(this, intent, SCAN_ACTIVITY);
     }
 
-    private void configureSDK(String apiKey) {
+    private void configureSDK() {
         if(!Quikkly.isConfigured()) {
             Quikkly.configureInstance(cordova.getContext(), 1, 2);
         }
