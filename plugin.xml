@@ -35,7 +35,7 @@
         <dependency id="cordova-plugin-cocoapod-support" />
 
         <pods-config ios-min-version="9.0" use-frameworks="true" />
-        <pod name="Quikkly" git="https://github.com/quikkly/ios-sdk.git" tag="v3.2" />
+        <pod name="Quikkly" git="https://github.com/quikkly/ios-sdk.git" tag="v3.4.10" />
         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
             <string>$CAMERA_USAGE_DESCRIPTION</string>
         </config-file>
